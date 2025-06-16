@@ -27,7 +27,7 @@ public class Cliente {
     private LocalDateTime fechaCreacion;
 
     @Column(name = "fecha_modificacion")
-    private Integer fechaModificacion;
+    private LocalDateTime fechaModificacion;
 
     @OneToMany(mappedBy = "cliente")
     @JsonIgnore
@@ -55,8 +55,8 @@ public class Cliente {
     public LocalDateTime getFechaCreacion() { return fechaCreacion; }
     public void setFechaCreacion(LocalDateTime fechaCreacion) { this.fechaCreacion = fechaCreacion; }
 
-    public Integer getFechaModificacion() { return fechaModificacion; }
-    public void setFechaModificacion(Integer fechaModificacion) { this.fechaModificacion = fechaModificacion; }
+    public LocalDateTime getFechaModificacion() { return fechaModificacion; }
+    public void setFechaModificacion(LocalDateTime fechaModificacion) { this.fechaModificacion = fechaModificacion; }
 
     public List<Vehiculo> getVehiculos() { return vehiculos; }
     public void setVehiculos(List<Vehiculo> vehiculos) { this.vehiculos = vehiculos; }

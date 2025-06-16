@@ -25,6 +25,9 @@ public class Login {
     @Column(name = "id_cliente")
     private Integer idCliente;
 
+    @Column(name= "id_rol")
+    private Integer idRol;
+
     // Getters y setters
 
     public Integer getIdUsuario() {
@@ -74,4 +77,12 @@ public class Login {
     public void setIdCliente(Integer idCliente) {
         this.idCliente = idCliente;
     }
+
+    public Integer getIdRol() {
+        return idRol;
+    }
+    public void setIdRol(Integer idRol) {
+        this.idRol = idRol;
+    }
+
 }
