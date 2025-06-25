@@ -23,7 +23,7 @@ public class TransitoController {
     }
 
     @GetMapping("/cliente/{idCliente}")
-    public List<Transito> obtenerPorCliente(@PathVariable int idCliente) {
+    public List<Transito> obtenerPorCliente(@PathVariable Long idCliente) {
         return service.obtenerPorCliente(idCliente);
     }
 }

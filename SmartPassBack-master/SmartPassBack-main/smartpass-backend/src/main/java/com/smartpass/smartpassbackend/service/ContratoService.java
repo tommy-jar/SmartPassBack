@@ -1,6 +1,7 @@
 package com.smartpass.smartpassbackend.service;
 
 import com.smartpass.smartpassbackend.model.Contrato;
+import com.smartpass.smartpassbackend.repository.ContratoInfo;
 import com.smartpass.smartpassbackend.repository.ContratoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,5 +33,9 @@ public class ContratoService {
 
     public void eliminarContrato(Integer id) {
         contratoRepository.deleteById(id);
+    }
+
+    public List<ContratoInfo> obtenerContratosPrepagoPorCliente(Integer idCliente) {
+        return contratoRepository.obtenerContratosPrepagoPorCliente(idCliente);
     }
 }

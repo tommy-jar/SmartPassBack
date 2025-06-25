@@ -1,6 +1,7 @@
 package com.smartpass.smartpassbackend.controller;
 
 import com.smartpass.smartpassbackend.model.Contrato;
+import com.smartpass.smartpassbackend.repository.ContratoInfo;
 import com.smartpass. smartpassbackend.service.ContratoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -55,5 +56,10 @@ public class ContratoController {
     @GetMapping("/cliente/{idCliente}")
     public List<Contrato> getContratosPorCliente(@PathVariable Integer idCliente) {
         return contratoService.obtenerContratosPorCliente(idCliente);
+    }
+
+    @GetMapping("/prepago/cliente/{idCliente}")
+    public ResponseEntity<List<ContratoInfo>> listarContratosPrepagoPorCliente(@PathVariable Integer idCliente) {
+        return ResponseEntity.ok(contratoService.obtenerContratosPrepagoPorCliente(idCliente));
     }
 }

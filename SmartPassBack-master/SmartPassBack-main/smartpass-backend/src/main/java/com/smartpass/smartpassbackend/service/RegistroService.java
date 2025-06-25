@@ -68,6 +68,21 @@ public class RegistroService {
         }
     }
 
+    public Optional<Cliente> obtenerPerfil(Long idCliente) {
+        return clienteRepository.findById(idCliente);
+    }
+
+    public Optional<Cliente> actualizarPerfil(Long idCliente, Cliente nuevosDatos) {
+        return clienteRepository.findById(idCliente).map(cliente -> {
+            cliente.setNombre(nuevosDatos.getNombre());
+            cliente.setApellido(nuevosDatos.getApellido());
+            cliente.setCorreo(nuevosDatos.getCorreo());
+            cliente.setTelefono(nuevosDatos.getTelefono());
+            cliente.setFechaModificacion(LocalDateTime.now());
+            return clienteRepository.save(cliente);
+        });
+    }
+
 
 
 }

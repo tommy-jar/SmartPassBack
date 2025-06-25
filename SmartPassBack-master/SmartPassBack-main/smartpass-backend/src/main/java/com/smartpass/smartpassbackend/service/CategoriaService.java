@@ -18,4 +18,6 @@ public class CategoriaService {
     public List<Categoria> listarCategorias() {
         return categoriaRepository.findAll();
     }
+
+
 }

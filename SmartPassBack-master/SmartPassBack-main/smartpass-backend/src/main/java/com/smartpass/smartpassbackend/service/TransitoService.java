@@ -19,7 +19,9 @@ public class TransitoService {
         return repository.findAll();
     }
 
-    public List<Transito> obtenerPorCliente(int idCliente) {
+    public List<Transito> obtenerPorCliente(Long idCliente) {
         return repository.findByIdCliente(idCliente);
     }
+
+
 }

@@ -44,6 +44,7 @@ public class Vehiculo {
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;
 
+
     public Integer getIdVehiculo() {
         return idVehiculo;
     }

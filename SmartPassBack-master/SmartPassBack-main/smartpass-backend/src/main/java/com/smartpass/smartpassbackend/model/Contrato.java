@@ -1,6 +1,8 @@
 package com.smartpass.smartpassbackend.model;
 
 import jakarta.persistence.*;
+
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
@@ -13,7 +15,7 @@ public class Contrato {
     private Integer idContrato;
 
 
-    @Column(name = "id_cliente", nullable = false)
+    @Column(name = "id_cliente", insertable = false, updatable = false)
     private Integer idCliente;
 
     @Column(name = "nro_contrato", insertable = false, updatable = false)
@@ -21,7 +23,7 @@ public class Contrato {
 
 
     @Column(name = "saldo", nullable = false)
-    private Integer saldo;
+    private BigDecimal saldo;
 
     @Column(name = "tipo_contrato", nullable = false, length = 3)
     private String tipoContrato;
@@ -34,6 +36,14 @@ public class Contrato {
 
     @Column(name = "id_estado", nullable = false)
     private Integer idEstado;
+
+    @ManyToOne
+    @JoinColumn(name = "id_cliente")
+    private Cliente cliente;
+
+    @ManyToOne
+    @JoinColumn(name = "id_tipo_facturacion")
+    private TipoFacturacion tipoFacturacion;
 
     // Getters y Setters
     public Integer getIdContrato() {
@@ -60,11 +70,11 @@ public class Contrato {
         this.nroContrato = nroContrato;
     }
 
-    public Integer getSaldo() {
+    public BigDecimal getSaldo() {
         return saldo;
     }
 
-    public void setSaldo(Integer saldo) {
+    public void setSaldo(BigDecimal saldo) {
         this.saldo = saldo;
     }
 
@@ -98,6 +108,21 @@ public class Contrato {
 
     public void setIdEstado(Integer idEstado) {
         this.idEstado = idEstado;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public TipoFacturacion getTipoFacturacion() {
+        return tipoFacturacion;
+    }
+
+    public void setTipoFacturacion(TipoFacturacion tipoFacturacion) {
+        this.tipoFacturacion = tipoFacturacion;
     }
 }
 

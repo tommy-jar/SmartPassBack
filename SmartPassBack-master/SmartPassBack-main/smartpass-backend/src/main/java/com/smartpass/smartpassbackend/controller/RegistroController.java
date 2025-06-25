@@ -5,7 +5,10 @@ import com.smartpass.smartpassbackend.model.Usuario;
 import com.smartpass.smartpassbackend.service.RegistroService;
 import com.smartpass.smartpassbackend.service.RegistroService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/registro")
@@ -67,5 +70,18 @@ public class RegistroController {
             this.usuario = usuario;
         }
     }
+
+    @GetMapping("/{idCliente}")
+    public ResponseEntity<Cliente> obtenerPerfil(@PathVariable Long idCliente) {
+        Optional<Cliente> cliente = registroService.obtenerPerfil(idCliente);
+        return cliente.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @PutMapping("/{idCliente}")
+    public ResponseEntity<Cliente> actualizarPerfil(@PathVariable Long idCliente, @RequestBody Cliente nuevosDatos) {
+        Optional<Cliente> clienteActualizado = registroService.actualizarPerfil(idCliente, nuevosDatos);
+        return clienteActualizado.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
 
 }
