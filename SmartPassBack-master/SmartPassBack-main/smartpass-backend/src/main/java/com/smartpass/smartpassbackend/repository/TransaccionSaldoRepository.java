@@ -6,7 +6,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface TransaccionSaldoRepository extends JpaRepository<TransaccionSaldo, Integer> {
@@ -14,5 +16,7 @@ public interface TransaccionSaldoRepository extends JpaRepository<TransaccionSal
     @Query("SELECT t FROM TransaccionSaldo t WHERE t.idContrato = :idContrato ORDER BY t.fecha DESC")
     List<TransaccionSaldo> obtenerPorContrato(@Param("idContrato") Integer idContrato);
 
+    @Query("SELECT SUM(t.monto) FROM TransaccionSaldo t WHERE t.tipoTransaccion = :tipo AND t.idContrato = :idContrato")
+    Optional<BigDecimal> sumByIdContrato(@Param("tipo") String tipo, @Param("idContrato") Integer idContrato);
 
 }
